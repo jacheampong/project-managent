@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<nav th:replace="layout :: header"></nav>
+
+<nav th:replace="layout :: foo"></nav>
+
+<body>
+
+	<div class="container">
+		<h2>PMA Home Page</h2>
+		<hr>
+
+		<p>
+			<a href="/pma/project/list">View All Projects</a>
+		</p>
+
+		<p>
+			<a href="/pma/project/new">Create A Project</a>
+		</p>
+
+		<p>
+			<a href="/pma/employee/list">View All Employee</a>
+		</p>
+
+		<p>
+			<a href="/pma/employee/new">Add New Employee</a>
+		</p>
+
+	</div>
+	
+	<br/>
+	<div class="col-md-4">
+		<canvas id="myPieChart" height="50" width="50"></canvas>
+		
+		<script type="text/javascript">
+			var chartData = "[[${projectStatusCnt}]]";
+		</script>
+	</div>
+	
+	<script type="text/javascript" th:src="@{/js/myChart.js}"></script>
+
+</body>
+</html>

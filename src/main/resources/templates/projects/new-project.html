@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<nav th:replace="layout :: header"></nav>
+
+<body>
+
+	<nav th:replace="layout :: foo"></nav>
+
+	<div>
+		<form action="/pma/project/save" th:object="${projectAttr}" method="post">
+			<input type="text" placeholder="Project Name" th:field="${projectAttr.name}" >
+			
+			<select th:field="${projectAttr.stage}" >
+				<option th:value="NOTSTARTED">Not Started</option>
+				<option th:value="INPROGRESS">In Progress</option>
+				<option th:value="COMPLETED">Completed</option>
+			</select>
+			
+			<textarea type="text" placeholder="Enter Project Description" th:field="${projectAttr.description}" ></textarea>
+			
+			<!-- can also use ${projectAttr.employees} -->
+			<select th:field="*{employees}" multiple="multiple">
+				<option th:each ="employee : ${allEmployees}"
+					th:value = "${employee.employeeId}"
+					th:text = "${employee.firstName}">
+				</option>
+			</select>
+			
+			<button type="submit">Create Project</button>
+		</form>
+	</div>
+
+</body>
+</html>

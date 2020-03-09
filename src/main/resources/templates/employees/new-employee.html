@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<nav th:replace="layout :: header"></nav>
+
+<body>
+	<nav th:replace="layout :: foo"></nav>
+
+	<div>
+		<form action="/pma/employee/save" th:object="${employeeAttr}" method="post">
+			<input type="text" placeholder="First Name" th:field="${employeeAttr.firstName}" >
+			<input type="text" placeholder="Last Name" th:field="${employeeAttr.lastName}" >
+			<input type="text" placeholder="email" th:field="${employeeAttr.email}" >
+			
+			<button type="submit">Save data</button>
+		</form>
+	</div>
+
+</body>
+</html>

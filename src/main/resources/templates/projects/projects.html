@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<nav th:replace="layout :: header"></nav>
+
+<body>
+	<nav th:replace="layout :: foo"></nav>
+
+	<div class="container">
+		<h4>Current Projects</h4>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<th>Project Name</th>
+				<th>Project Stage</th>
+				<th>Project Description</th>
+			</thead>
+			<tbody>
+				<tr th:each="aProject : ${projects}">
+					<td th:text="${aProject.name}" />
+					<td th:text="${aProject.stage}" />
+					<td th:text="${aProject.description}" />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</body>
+</html>

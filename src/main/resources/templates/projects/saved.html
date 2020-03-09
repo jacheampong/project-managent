@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<nav th:replace="layout :: header"></nav>
+
+<nav th:replace="layout :: foo"></nav>
+
+<body>
+	<h1>Data saved!</h1>
+	<p><span th:text="${sProject.name}"></span> </p>
+
+	<p><span th:text="${sProject.stage}"></span> </p>
+	
+	<p><span th:text="${sProject.description}" > </span></p>
+	
+</body>
+</html>
