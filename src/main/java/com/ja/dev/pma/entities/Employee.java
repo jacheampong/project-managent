@@ -15,15 +15,14 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Employee {
 	
-	/**
-	 * 
-	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="employee_seq")
 	private long employeeId;
+	
 	private String firstName;
+	
 	private String lastName;
+	
 	private String email;
 	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE},
