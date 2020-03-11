@@ -1,4 +1,4 @@
-# project-management - (still Work In Progress)
+# project-management - (Work In Progress)
 #Project title
 project-management
 
@@ -10,7 +10,7 @@ Tech/framework used:<br />
 Java 8 <br />
 Spring Framework 5 <br />
 Spring Boot 2 <br />
-Spring MVC <br />
+Spring Web <br />
 Spring Data JPA <br />
 Spring AOP (Aspect Oriented Programming) <br />
 Spring Security <br />
