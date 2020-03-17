@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ja.dev.pma.entities.Employee;
 import com.ja.dev.pma.entities.Project;
-import com.ja.dev.pma.repos.EmployeeRepository;
-import com.ja.dev.pma.repos.ProjectRepository;
+import com.ja.dev.pma.services.EmployeeService;
+import com.ja.dev.pma.services.ProjectService;
 
 @Controller
 @RequestMapping("/project")
@@ -24,17 +24,17 @@ public class ProjectController {
 	Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
 	
 	@Autowired
-	ProjectRepository projectRepository;
+	ProjectService projectService;
 	
 	@Autowired
-	EmployeeRepository employeeRepository;
+	EmployeeService employeeService;
 	
 	@GetMapping("/new")
 	public String displayNewProject(Model model) {
 		
 		// bind empty object to the form - need for empty constructor
 		Project aProject = new Project();	
-		List<Employee> employees = employeeRepository.findAll();
+		List<Employee> employees = employeeService.findAllEmployees();
 		
 		// bind model attribute to html 
 		model.addAttribute("projectAttr", aProject); 
@@ -48,7 +48,7 @@ public class ProjectController {
 	public String save(Project project, @RequestParam List<Long> employees, Model model) {
 		LOGGER.info("=> In save() obj: {}", project);
 		
-		Project sProject = projectRepository.save(project);
+		Project sProject = projectService.save(project);
 	
 		model.addAttribute("sProject", sProject);
 		
@@ -60,7 +60,7 @@ public class ProjectController {
 	public String getAllProjects(Model model) {
 		LOGGER.info("=> In getAllProjects()");
 		
-		List<Project> projects = projectRepository.findAll();
+		List<Project> projects = projectService.findAllProjects();
 		model.addAttribute("projects", projects);
 		LOGGER.info("=> In getAllProjects()  project count: {}", projects.size());
 		

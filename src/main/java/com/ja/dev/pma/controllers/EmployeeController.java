@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ja.dev.pma.dto.EmployeeProject;
 import com.ja.dev.pma.entities.Employee;
-import com.ja.dev.pma.repos.EmployeeRepository;
+import com.ja.dev.pma.services.EmployeeServiceImpl;
 
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
 	
-	Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
+	Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
-	EmployeeRepository employeeRepository;
+	EmployeeServiceImpl employeeServiceImpl;
 	
 	@GetMapping("/new")
 	public String displayEmployeeForm(Model model) {
@@ -37,7 +37,7 @@ public class EmployeeController {
 	@PostMapping("/save")
 	public String saveEmployee(Employee employee, Model model) {
 		LOGGER.info("=> In saveEmployee()");
-		Employee sEmployee = employeeRepository.save(employee);
+		Employee sEmployee = employeeServiceImpl.save(employee);
 
 		LOGGER.info("saved emp: " + sEmployee);
 		
@@ -49,8 +49,7 @@ public class EmployeeController {
 	public String getAllProjects(Model model) {
 		LOGGER.info("=> In getAllProjects()");
 		
-//		List<Employee> employees = employeeRepository.findAll();
-		List<EmployeeProject> employeesProjectCount = employeeRepository.employeeProjects();
+		List<EmployeeProject> employeesProjectCount = employeeServiceImpl.getEmployeeProjects();
 		model.addAttribute("employeesProjectCount", employeesProjectCount);
 		LOGGER.info("=> In getAllProjects()  employee count: {}", employeesProjectCount.size());
 		
