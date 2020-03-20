@@ -13,8 +13,8 @@ import javax.persistence.Table;
 public class UserAccount {
 	
 	@Id
-	@SequenceGenerator(name = "user_accounts_seq", sequenceName = "user_id_seq", allocationSize = 50)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="user_accounts_seq")
+	@SequenceGenerator(name="user_accounts_seq", initialValue=1, allocationSize=1)
 	@Column(name = "user_id")
 	private long userId;
 	
@@ -27,7 +27,6 @@ public class UserAccount {
 	private boolean enabled = true;
 	
 	public UserAccount() {
-		
 	}
 	
 	public long getUserId() {

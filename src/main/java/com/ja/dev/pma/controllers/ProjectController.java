@@ -49,8 +49,11 @@ public class ProjectController {
 		LOGGER.info("=> In save() obj: {}", project);
 		
 		Project sProject = projectService.save(project);
+		LOGGER.info("=> Save project = " + sProject);
 	
 		model.addAttribute("sProject", sProject);
+		
+		LOGGER.info("=> redirecting to new page");
 		
 		// use a redirect to prevent duplicate submission
 		return "redirect:/project/new";
